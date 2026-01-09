@@ -40,3 +40,118 @@
 .read-the-docs {
   color: #888;
 }
+
+.product-search-card {
+  background-color: #1e1e1e; 
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 480px;
+  margin: 2rem auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.product-input {
+  flex: 1;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.product-input:focus {
+  border-color: #646cff;
+}
+
+.fetch-btn {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 0 1.5rem;
+  font-weight: 600;
+}
+
+.fetch-btn:hover {
+  background-color: #333;
+  border-color: #646cff;
+}
+
+.paste-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  border: 2px dashed #555;
+  border-radius: 12px;
+  background-color: #252525;
+  color: #888;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.paste-area:hover {
+  border-color: #777;
+  color: #aaa;
+}
+
+.preview-container {
+  position: relative;
+  background: #000;
+  border-radius: 8px;
+  border: 1px solid #444;
+  padding: 20px;
+  text-align: center; 
+  margin-top: 1rem;
+}
+
+.preview-label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 0.75rem;
+  color: #aaa;
+  background: rgba(0,0,0,0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.preview-image {
+  display: block;      
+  margin: 0 auto;    
+  max-width: 100%;
+  max-height: 300px;   
+  object-fit: contain;
+  border-radius: 4px;
+  position: relative; 
+  z-index: 5;
+}
+
+.upload-btn {
+  width: 100%;
+  background-color: #646cff;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border: none;
+}
+
+.upload-btn:hover {
+  background-color: #535bf2;
+}

@@ -1,4 +1,6 @@
+
 import { useState } from "react";
+
 const ProductSearch = ({ productCode, onProductCodeChange, onFetch }) => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [pastedFile, setPastedFile] = useState(null);
@@ -44,23 +46,26 @@ const ProductSearch = ({ productCode, onProductCodeChange, onFetch }) => {
   }
 
   return (
-    <div>
-      <input
-        id="product-code-input"
-        type="text"
-        placeholder="Enter product code"
-        value={productCode}
-        onChange={(e) => onProductCodeChange(e.target.value)}
-      />
-      <br />
-      <br />
-      <button onClick={onFetch}>Fetch Product(s)</button>
+    <div className="product-search-card">
+      {/* Top Section: Input and Search */}
+      <div className="input-group">
+        <input
+          className="product-input"
+          id="product-code-input"
+          type="text"
+          placeholder="Enter product code"
+          value={productCode}
+          onChange={(e) => onProductCodeChange(e.target.value)}
+        />
+        <button className="fetch-btn" onClick={onFetch}>
+          Fetch
+        </button>
+      </div>
+
+      {/* Middle Section: Paste Zone */}
       <div
-        style={{
-          border: "2px dashed gray",
-          padding: "20px",
-          marginTop: "20px",
-        }}
+        className="paste-area"
+        tabIndex="0" 
         onPaste={(e) => {
           const items = e.clipboardData.items;
           for (let item of items) {
@@ -77,43 +82,43 @@ const ProductSearch = ({ productCode, onProductCodeChange, onFetch }) => {
           }
         }}
         onClick={(e) => {
-          e.stopPropagation(); // prevent immediate removal
+          e.stopPropagation();
 
           const el = e.currentTarget;
+          el.focus(); 
+
           const isHighlighted = el.dataset.highlighted === "true";
 
           if (isHighlighted) {
-            el.style.border = "2px dashed gray";
-            el.style.backgroundColor = "transparent";
+            el.style.border = "2px dashed #555";
+            el.style.backgroundColor = "#252525";
             el.dataset.highlighted = "false";
           } else {
-            el.style.border = "2px solid #007bff";
-            el.style.backgroundColor = "#eaf3ff";
+            el.style.border = "2px solid #646cff";
+            el.style.backgroundColor = "rgba(100, 108, 255, 0.1)"; 
             el.dataset.highlighted = "true";
           }
 
-          // remove highlight when clicking elsewhere
           document.onclick = () => {
-            el.style.border = "2px dashed gray";
-            el.style.backgroundColor = "transparent";
+            el.style.border = "2px dashed #555";
+            el.style.backgroundColor = "#252525";
             el.dataset.highlighted = "false";
             document.onclick = null;
           };
         }}
       >
-        Paste image here (Ctrl/Cmd + V)
+        Paste image here (Click then Ctrl/Cmd + V)
       </div>
+
+      {/* Bottom Section: Preview */}
       {previewUrl && (
-        <div style={{ marginTop: "20px" }}>
-          <p>Preview:</p>
-          <img
-            src={previewUrl}
-            alt="preview"
-            style={{ width: "200px", border: "1px solid #ccc" }}
-          />
+        <div className="preview-container">
+          <span className="preview-label">Preview</span>
+          <img key={previewUrl} src={previewUrl} alt="preview" className="preview-image" />
         </div>
       )}
-      <button onClick={uploadImage} style={{ marginTop: "10px" }}>
+      
+      <button className="upload-btn" onClick={uploadImage}>
         Upload Image
       </button>
     </div>
